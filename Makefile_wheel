@@ -1,0 +1,11 @@
+CC = g++
+TARGET = wheel
+LIBS =
+CFLAGS := $(shell pkg-config --cflags opencv) $(CFLAGS)
+
+LFLAGS = -L/usr/local/lib -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_imgproc -lopencv_highgui -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_superres -lopencv_videoio -lopencv_videostab -lopencv_imgcodecs
+
+wheel: wheel.cpp
+	$(CC) -Wall -std=c++11 -O3 -g wheel.cpp  $(CFLAGS) $(LFLAGS) $(LIBS) -o wheel
+clean:
+	rm ./wheel
